@@ -3,6 +3,7 @@ import { Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Marquee from "./components/Marquee";
+import Footer from "./components/Footer";
 
 
 
@@ -23,10 +24,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${notosorifbanngla.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-background">
         <Header />
         <Marquee />
         {children}
+        <Footer />
         </body>
     </html>
   );
