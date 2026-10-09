@@ -10,7 +10,7 @@ const Navlinks = async() => {
         <nav className='max-w-[1164] flex justify-start gap-4  text-black py-2'>
             {
                 data.map((link) => (
-                    <Link key={link.id} href={`/categories/${link.slug}`} className="">{link.icon}
+                    <Link key={link.id} href={`/category/${link.slug}`} className="">{link.icon}
                     <p>{link.nameBn}</p>
                     </Link>
                     

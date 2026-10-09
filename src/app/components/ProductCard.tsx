@@ -17,7 +17,7 @@ interface Product {
         type?: "increase" | "decrease" | "all";
     };
 
-const ProductCard = async ({ item, type = "all" }: ProductCardProps) => {
+const ProductCard = ({ item, type = "all" }: ProductCardProps) => {
    
       const getUnit = (unit: string) => {
     switch (unit) {
