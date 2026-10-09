@@ -1,6 +1,7 @@
 
 import React from "react";
 import DecreaseProductCard from "./DecreaseProductCard";
+import ProductCard from "./ProductCard";
 
 const DecreaseProducts = async () => {
   const res = await fetch(
@@ -32,7 +33,7 @@ const DecreaseProducts = async () => {
     <section className="mx-auto mt-8 w-full max-w-[1120px] px-3 sm:mt-10 sm:px-4">
       {/* Section heading */}
       <div className="mb-5 flex items-center gap-2">
-        <span className="font-bold text-red-600">▼</span>
+        <span className="font-bold text-green-600">▼</span>
         <h2 className="text-xl font-bold">
           আজ দাম কমেছে
         </h2>
@@ -42,7 +43,7 @@ const DecreaseProducts = async () => {
       {decreaseProducts.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {decreaseProducts.map((item) => (
-            <DecreaseProductCard item={item} key={item.id}/>
+            <ProductCard item={item} key={item.id}/>
           ))}
         </div>
       ) : (

@@ -1,30 +1,25 @@
 import React from 'react';
 
-const IncreaseProductCard = async ({item}) => {
-     const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
-    {
-      cache: "no-store",
+interface Product {
+        id: number;
+        nameBn: string;
+        unit: string;
+        today: number;
+        change: {
+            dir: string;
+            pct: number;
+        };
+        image: string;
     }
-  );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
+    type ProductCardProps = {
+        item: Product;
+        type?: "increase" | "decrease" | "all";
+    };
 
-  const data = await res.json();
-
-  console.log("Increase Products Data:", data);
-
-      const increaseProducts = data.filter(
-    (item: {
-      id: number;
-      change: { dir: string; pct: number };
-    }) => item.change.dir === "up"
-  ).sort((a: { change: { pct: number } }, 
-    b: { change: { pct: number } }) => b.change.pct - a.change.pct).slice(0,6);
-
-  const getUnit = (unit: string) => {
+const ProductCard = async ({ item, type = "all" }: ProductCardProps) => {
+   
+      const getUnit = (unit: string) => {
     switch (unit) {
       case "kg":
         return "প্রতি কেজি";
@@ -38,6 +33,13 @@ const IncreaseProductCard = async ({item}) => {
         return unit;
     }
   };
+
+  const isUp = item.change.dir === "up"; 
+  const isDown = item.change.dir === "down"; 
+  const changeColor = isUp ? "bg-red-50 text-red-600" : isDown ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-600"; 
+
+  const changeIcon = isUp ? "▲" : isDown ? "▼" : "—";
+
 
     return (
         <div
@@ -68,12 +70,12 @@ const IncreaseProductCard = async ({item}) => {
                   {item.today} টাকা
                 </p>
                
-                <span className="rounded-full bg-red-50 px-2 py-1 text-sm font-semibold text-red-600">
-                  ▲ +{Math.abs(item.change.pct).toFixed(1)}%
+                <span className={`rounded-full bg-green-50 px-2 py-1 text-sm font-semibold ${changeColor}`}>
+                  {changeIcon} +{Math.abs(item.change.pct).toFixed(1)}%
                 </span>
               </div>
             </div>
     );
 };
 
-export default IncreaseProductCard;
+export default ProductCard;

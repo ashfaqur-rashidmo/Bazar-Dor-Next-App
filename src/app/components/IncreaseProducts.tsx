@@ -1,6 +1,19 @@
 
 import React from "react";
 import IncreaseProductCard from "./IncreaseProductCard";
+import ProductCard from "./ProductCard";
+
+interface Product {
+  id: number;
+  nameBn: string;
+  unit: string;
+  today: number;
+  change: {
+    dir: string;
+    pct: number;
+  };
+  image: string;
+}
 
 const IncreaseProducts = async () => {
   const res = await fetch(
@@ -42,7 +55,7 @@ const IncreaseProducts = async () => {
       {increaseProducts.length > 0 ? (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {increaseProducts.map((item) => (
-            <IncreaseProductCard item={item} key={item.id}/>
+            <ProductCard item={item} key={item.id}/>
           ))}
         </div>
       ) : (
