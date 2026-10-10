@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 interface Product {
@@ -10,6 +11,7 @@ interface Product {
             pct: number;
         };
         image: string;
+        slug: string;
     }
 
     type ProductCardProps = {
@@ -42,7 +44,7 @@ const ProductCard = ({ item, type = "all" }: ProductCardProps) => {
 
 
     return (
-        <div
+        <Link href={`/product/${item.slug}`}
               key={item.id}
               className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
             >
@@ -74,7 +76,7 @@ const ProductCard = ({ item, type = "all" }: ProductCardProps) => {
                   {changeIcon} +{Math.abs(item.change.pct).toFixed(1)}%
                 </span>
               </div>
-            </div>
+            </Link>
     );
 };
 

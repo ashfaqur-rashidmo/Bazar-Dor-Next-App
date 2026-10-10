@@ -10,7 +10,9 @@ export default async function CategoryPage({
   const { slug } = await params;
 
   // Get the selected category
-  const categoryResponse = await fetch(`https://api.api-store.workers.dev/api/bazardor/categories/${slug}`);
+  // const categoryResponse = await fetch(`https://api.api-store.workers.dev/api/bazardor/categories/${slug}`);
+  // const categoryResponse = await fetch(`https://api.abcz.workers.dev/api/bazardor/categories/${slug}`);
+  const categoryResponse = await fetch(`https://openapi.programming-hero.com/api/bazardor/categories/${slug}`);
 
   if (!categoryResponse.ok) {
     notFound();
@@ -20,7 +22,9 @@ export default async function CategoryPage({
 
   // Get only products belonging to this category
   const productsResponse = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products?category=${slug}`
+    // `https://api.api-store.workers.dev/api/bazardor/products?category=${slug}`
+    // `https://api.abcz.workers.dev/api/bazardor/products?category=${slug}`
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${slug}`
   );
 
   if (!productsResponse.ok) {
@@ -31,7 +35,7 @@ export default async function CategoryPage({
 
   return (
     <main className="min-h-screen bg-[#f0f5f0] px-4 py-5 sm:px-6">
-      <div className="mx-auto max-w-[1560px]">
+      <div className="mx-auto max-w-[1120px]">
         {/* Category heading */}
         <section className="mb-4 flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-3xl">
