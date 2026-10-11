@@ -1,4 +1,3 @@
- 
 "use client";
 
 import { authClient } from "@/lib/auth-client";
@@ -68,8 +67,9 @@ const SignUpPage = () => {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#f0f5f0] px-4 py-10">
-      <div className="grid w-full max-w-5xl items-center gap-8 md:grid-cols-2">
-        <div className="text-center md:text-left">
+      <div className="w-full max-w-5xl">
+
+        <div className="mb-6 text-center">
           <h2 className="text-2xl font-bold text-gray-900">
             অ্যাকাউন্ট তৈরি করুন
           </h2>
@@ -78,7 +78,7 @@ const SignUpPage = () => {
           </p>
         </div>
 
-        <div className="w-full rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+        <div className="mx-auto w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
           <form className="space-y-5" onSubmit={onSubmit}>
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-700">
