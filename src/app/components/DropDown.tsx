@@ -56,7 +56,7 @@ export default function UserDropdown() {
           <img
             src={user.image}
             alt={name}
-            className="h-6 w-6 rounded-full object-cover"
+            className="h-15 w-15 rounded-full object-cover"
           />
         ) : (
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-success/15 text-xs font-semibold">
