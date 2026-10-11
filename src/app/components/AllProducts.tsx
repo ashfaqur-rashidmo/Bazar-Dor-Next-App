@@ -16,7 +16,7 @@ const AllProducts = async () => {
   console.log("Decrease Products Data:", data);
 
     return (
-        <section className="mx-auto mt-8 w-full max-w-280 px-3 sm:mt-10 sm:px-4" id="সব-পণ্য">
+        <section className="mx-auto mt-8 w-full max-w-7xl px-3 sm:mt-10 sm:px-4" id="সব-পণ্য">
       {/* Section heading */}
       <div className="mb-5 items-center gap-2">
        
