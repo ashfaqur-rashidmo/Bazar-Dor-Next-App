@@ -1,15 +1,18 @@
-
-
+"use client";
 import Image from "next/image";
 import Navlinks from "./Navlinks";
-import Link from "next/link";
 import UserInfo from "./UserInfo";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const CurrentDate = dynamic(
+  () => import("./CurrentDate"),
+  { ssr: false }
+);
 
 const Header = () => {
-const date = new Date().toLocaleDateString("bn-BD", {
-dateStyle: "full",
-timeZone: "Asia/Dhaka",
-});
+
+
 
 return ( 
 <header className="w-full bg-[#fbfcfa] text-[#171d19]">
@@ -29,12 +32,12 @@ return (
 
 
         <div className="flex flex-col justify-center">
-          <h1 className="text-[20px] font-bold leading-[19px]">
+          <h1 className="text-[20px] font-bold leading-4.75">
             বাজার দর
           </h1>
 
-          <p className="text-[9px] font-normal leading-[13px] text-gray-600">
-            {date}
+          <p className="text-[9px] font-normal leading-3.25 text-gray-600">
+            <CurrentDate />
           </p>
         </div>
       </div>
@@ -46,7 +49,9 @@ return (
 
   {/* Category navigation */}
   <div className="mx-auto max-w-[1130] px-1">
-    <Navlinks />
+    <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-lg bg-gray-200" />}>
+      <Navlinks />
+    </Suspense>
   </div>
 </header>
 

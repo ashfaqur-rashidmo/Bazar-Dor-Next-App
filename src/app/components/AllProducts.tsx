@@ -1,14 +1,10 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import  ProductCard, {Product} from './ProductCard';
 
 const AllProducts = async () => {
      const res = await fetch(
-    // "https://api.api-store.workers.dev/api/bazardor/products",
-    // "https://api.abcz.workers.dev/api/bazardor/products",
     "https://openapi.programming-hero.com/api/bazardor/products",
-    {
-      cache: "no-store",
-    }
+    
   );
 
   if (!res.ok) {
@@ -20,7 +16,7 @@ const AllProducts = async () => {
   console.log("Decrease Products Data:", data);
 
     return (
-        <section className="mx-auto mt-8 w-full max-w-[1120px] px-3 sm:mt-10 sm:px-4">
+        <section className="mx-auto mt-8 w-full max-w-280 px-3 sm:mt-10 sm:px-4" id="সব-পণ্য">
       {/* Section heading */}
       <div className="mb-5 items-center gap-2">
        
@@ -34,7 +30,7 @@ const AllProducts = async () => {
       {/* Product cards */}
       
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-          {data.map((item) => (
+          {data.map((item: Product) => (
             <ProductCard item={item} key={item.id}/>
           ))}
         </div>

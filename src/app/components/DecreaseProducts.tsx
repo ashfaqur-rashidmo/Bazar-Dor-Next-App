@@ -1,12 +1,24 @@
 
 import React from "react";
-import DecreaseProductCard from "./DecreaseProductCard";
 import ProductCard from "./ProductCard";
+
+interface Product {
+  id: number;
+  nameBn: string;
+  unit: string;
+  today: number;
+  change: {
+    dir: string;
+    pct: number;
+  };
+  image: string;
+  slug: string;
+}
+
 
 const DecreaseProducts = async () => {
   const res = await fetch(
-    // "https://api.api-store.workers.dev/api/bazardor/products",
-    // "https://api.abcz.workers.dev/api/bazardor/products",
+  
     "https://openapi.programming-hero.com/api/bazardor/products",
     {
       cache: "no-store",
@@ -17,7 +29,7 @@ const DecreaseProducts = async () => {
     throw new Error("Failed to fetch products");
   }
 
-  const data = await res.json();
+  const data: Product[] = await res.json();
 
   console.log("Decrease Products Data:", data);
 
@@ -32,7 +44,7 @@ const DecreaseProducts = async () => {
  
 
   return (
-    <section className="mx-auto mt-8 w-full max-w-[1120px] px-3 sm:mt-10 sm:px-4">
+    <section className="mx-auto mt-8 w-full max-w-280 px-3 sm:mt-10 sm:px-4">
       {/* Section heading */}
       <div className="mb-5 flex items-center gap-2">
         <span className="font-bold text-green-600">▼</span>

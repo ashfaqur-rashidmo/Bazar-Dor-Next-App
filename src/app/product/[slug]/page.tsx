@@ -83,7 +83,7 @@ export default async function ProductDetailsPage({
 
   return (
     <main className="min-h-screen bg-[#f0f5f0] px-4 py-5 sm:px-6">
-      <div className="mx-auto max-w-[1164px]">
+      <div className="mx-auto max-w-291">
        
         <div className="mb-5 flex flex-wrap items-center gap-2 text-sm text-gray-500">
           <Link href="/">হোম</Link>

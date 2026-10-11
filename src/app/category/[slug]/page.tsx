@@ -9,9 +9,7 @@ export default async function CategoryPage({
 }) {
   const { slug } = await params;
 
-  // Get the selected category
-  // const categoryResponse = await fetch(`https://api.api-store.workers.dev/api/bazardor/categories/${slug}`);
-  // const categoryResponse = await fetch(`https://api.abcz.workers.dev/api/bazardor/categories/${slug}`);
+
   const categoryResponse = await fetch(`https://openapi.programming-hero.com/api/bazardor/categories/${slug}`);
 
   if (!categoryResponse.ok) {
@@ -22,8 +20,7 @@ export default async function CategoryPage({
 
   // Get only products belonging to this category
   const productsResponse = await fetch(
-    // `https://api.api-store.workers.dev/api/bazardor/products?category=${slug}`
-    // `https://api.abcz.workers.dev/api/bazardor/products?category=${slug}`
+   
     `https://openapi.programming-hero.com/api/bazardor/products?category=${slug}`
   );
 

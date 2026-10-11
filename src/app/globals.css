@@ -1,11 +1,2 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
-
-:root{
---color-background: #F0F5F0;
-}
-
-:primary-color {
-    /* --color-BannerBg: #FAFCFA; */
-}

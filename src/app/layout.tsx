@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Marquee from "./components/Marquee";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 
 
@@ -25,10 +26,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${notosorifbanngla.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background">
+      <body className="min-h-full flex flex-col">
         <Header />
-        <Marquee />
-        {children}
+        <Suspense
+       fallback={
+      <div className="border-y border-gray-200 bg-gray-50 py-2 text-center text-sm text-gray-500">
+      বাজারদর লোড হচ্ছে...
+    </div>
+  }
+>
+     <Marquee />
+     </Suspense>
+        <main className="flex-1">{children}</main>
         <Footer />
         <Toaster />
         </body>

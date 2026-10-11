@@ -1,67 +1,25 @@
-// "use client"
-
-// import { authClient } from '@/lib/auth-client';
-// import React from 'react';
-
-// const profilePage = () => {
-//     const {data: session} = authClient.useSession()
-//     const user = session?.user
-//     console.log(user)
-
-
-//     return (
-//         <div>
-//             <div>
-//                 <div>
-//                     <h1 className='text-2xl font-bold'>আমার প্রোফাইল</h1>
-//             <p>আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
-//                 </div>
-
-//                 <div>
-//                     <img src={user?.image as string} 
-//                     alt="Profile Image" />
-
-//                     <h2>{user?.name}</h2>
-//                     <p>{user?.email}</p>
-                
-//                 </div>
-
-//                 {/* form for name */}
-//                 <div>
-//                     <label htmlFor="name">নাম</label>
-//                     <input type="text" id="name" name="name" />
-//                 </div>
-//                 <button>আপডেট</button>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default profilePage;
-
 
 "use client";
 
 import { authClient } from "@/lib/auth-client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { FaUser, FaSignOutAlt, FaEdit } from "react-icons/fa";
+import { FaUser, FaSignOutAlt } from "react-icons/fa";
+import Image from "next/image";
 
 const ProfilePage = () => {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
 
-  const [name, setName] = useState("");
+  
   const [updating, setUpdating] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
 
-  useEffect(() => {
-    if (user?.name) {
-      setName(user.name);
-    }
-  }, [user?.name]);
+  const [name, setName] = useState(user?.name || "");
+
+
 
   const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -171,10 +129,13 @@ const ProfilePage = () => {
           <div className="flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:p-8">
             <div className="flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-full border-4 border-green-50 bg-green-100">
               {user.image ? (
-                <img
-                  src={user.image}
-                  alt={`${user.name}'s profile`}
-                  className="h-full w-full object-cover"
+            
+                <Image 
+                src={user.image}
+                alt={`${user.name}'s profile`}
+                width={96}
+                height={96}
+                className="h-full w-full object-cover"
                 />
               ) : (
                 <FaUser className="text-3xl text-green-700" />
@@ -184,7 +145,7 @@ const ProfilePage = () => {
             <div className="min-w-0 flex-1">
     
 
-              <h3 className="mt-1 break-words text-xl font-bold text-gray-900">
+              <h3 className="mt-1 wrap-break text-xl font-bold text-gray-900">
                 {user.name || "নাম দেওয়া হয়নি"}
               </h3>
 
@@ -220,7 +181,7 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            <form onSubmit={handleUpdate} className="space-y-4">
+            <form key={user.id} onSubmit={handleUpdate} className="space-y-4">
               <div>
                 <label
                   htmlFor="name"

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-interface Product {
+export interface Product {
         id: number;
         nameBn: string;
         unit: string;
