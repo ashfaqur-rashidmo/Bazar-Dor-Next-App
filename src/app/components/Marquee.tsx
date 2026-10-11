@@ -27,7 +27,7 @@ const Marquee = async() => {
             <MarqueeText direction="right" duration={15} className="flex gap-4">
                 {
                     data.map((item) => (
-                        <Link href={`/products/${item.slug}`} key={item.id} className="mx-4 gap-1.5 inline-flex items-center text-sm text-gray-700 hover:text-gray-900">
+                        <Link href={`/product/${item.slug}`} key={item.id} className="mx-4 gap-1.5 inline-flex items-center text-sm text-gray-700 hover:text-gray-900">
                             {/* emoji product name */}
                             <span>{item.categoryIcon}</span>
 

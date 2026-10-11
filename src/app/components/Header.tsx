@@ -1,45 +1,9 @@
 
 
-// import Image from 'next/image';
-// import React from 'react';
-// import Navlinks from './Navlinks';
-
-// const Header = () => {
-//     const date = new Date().toLocaleDateString("bn-BD", {
-//     dateStyle: "full",
-//   });
-//     return (
-//         <div>
-//             <div className='flex justify-between items-center max-w-[1164] mx-auto'>
-//                 {/* logo and date */}
-//                 <div>
-//                     <Image 
-//                     src="/logo-icon.png" 
-//                     alt="Logo" 
-//                     width={40}
-//                     height={40}
-//                      />
-//                     <h2 className='text-black font-bold text-2xl'>বাজার দর</h2>
-//                     <p className='text-black'>{date}</p>
-//                 </div>
-//                 {/* sign in sign up buttons */}
-//                 <div>
-//                     <button className='text-black px-4 py-2 rounded'>সাইন ইন</button>
-//                     <button className='bg-green-700 text-white px-4 py-2 rounded'>সাইন আপ</button>
-//                 </div>
-//             </div>
-//             <Navlinks />
-//         </div>
-//     );
-// };
-
-// export default Header;
-
-
-
 import Image from "next/image";
 import Navlinks from "./Navlinks";
 import Link from "next/link";
+import UserInfo from "./UserInfo";
 
 const Header = () => {
 const date = new Date().toLocaleDateString("bn-BD", {
@@ -76,23 +40,7 @@ return (
       </div>
 
       {/* Authentication buttons */}
-      <div className="flex items-center gap-3">
-        <Link
-          type="button"
-          className="rounded px-2 py-1 text-[17px] font-medium transition-colors hover:text-green-700"
-          href="/sign-in"
-        >
-          সাইন ইন
-        </Link>
-
-        <Link
-          type="button"
-          className="rounded-md bg-[#078c43] px-3.5 py-[7px] text-[17px] font-medium text-white shadow-[0_2px_3px_rgba(0,0,0,0.25)] transition-colors hover:bg-green-800"
-          href="/sign-up"
-        >
-          সাইন আপ
-        </Link>
-      </div>
+      <UserInfo />
     </div>
   </div>
 

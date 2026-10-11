@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Marquee from "./components/Marquee";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Marquee />
         {children}
         <Footer />
+        <Toaster />
         </body>
     </html>
   );
