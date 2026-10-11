@@ -144,7 +144,7 @@ const ProductCard = ({ item }: ProductCardProps) => {
         </div>
 
         <div className="min-w-0 flex-1">
-          <h3 className="break-words text-sm font-bold leading-6 text-gray-900 sm:text-base">
+          <h3 className="wrap-break-words text-sm font-bold leading-6 text-gray-900 sm:text-base">
             {item.nameBn}
           </h3>
 
